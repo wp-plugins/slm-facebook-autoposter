@@ -21,7 +21,7 @@ With SLM Facebook Autoposter plugin you do not need to worry about it as it will
 
 Here is an example of how posts, shated by Facebook autoposter Wordpress plugin can look like:
 
-[img http://www.maxvim.com/private/tools/images/slm-facebook-autoposter-post.png]
+[image http://www.maxvim.com/private/tools/images/slm-facebook-autoposter-post.png]
 
 To be able to share your posts automatically, you will need to configure a Facebook application.
 
