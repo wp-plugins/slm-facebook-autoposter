@@ -14,6 +14,27 @@ Automatically shares new posts and pages on your Facebook timeline or on Faceboo
 
 This plugin automatically creates posts on your Facebook timeline or on your Facebook fan page for all new posts and pages, published on your blog. 
 
+It is important to build Facebook audience and to share new content with it.
+But it takes a lot of time to notify your fans about new content, that was posted on your blog.
+
+With SLM Facebook Autoposter plugin you do not need to worry about it as it will share your posts either to your personal timeline or to your Facebook page automatically.
+
+Here is an example of how posts, shated by Facebook autoposter Wordpress plugin can look like:
+
+http://www.maxvim.com/private/tools/images/slm-facebook-autoposter-post.png
+
+To be able to share your posts automatically, you will need to configure a Facebook application.
+
+This is a very simple process. Below you can find a video on how to configure Facebook application.
+
+https://www.youtube.com/watch?v=IGO9HvJ_00k
+
+It shows a paid version of the plugin, but the process is exactly the same with this free version. The only difference is that you will simply enter information, provided to you by Facebook in the fields on Facebook Autoposter Settings page.
+
+With a paid version of this plugin you can share you posts to multiple social and web 2.0 platforms.
+
+[Click here to view case studies and information on what it can do for you](http://www.maxvim.com/private/tools/slm.php?who=facebookslm)
+  
 == Installation ==
 
 1. Download the plugin.
@@ -34,7 +55,9 @@ First released to public
 
 == Screenshots ==
 
-1. Main settings.
+1. Post example.
+2. Main Settings.
+3. Submissions log.
 
 == Frequently Asked Questions ==
 

@@ -103,19 +103,19 @@ if (!class_exists('SLMFacebookOptionsUI')) {
 			$html .= '</tr>';
 			$html .= '<tr>';
 			$html .= 	'<td>Do not share posts published before</td>';
-			$html .= 	'<td><input type="text" class="datepicker" id="wp_maxv_st_share_old_posts_date" name="wp_maxv_st_share_old_posts_date" value="'.$this->settings['share_old_posts_date'].'" style="width:100px;"/>'.
+			$html .= 	'<td><input type="text" class="datepicker" id="wp_maxv_st_share_old_posts_date" name="wp_maxv_st_share_old_posts_date" value="'.((isset($this->settings['share_old_posts_date']))?$this->settings['share_old_posts_date']:'').'" style="width:100px;"/>'.
 					' <span class="st-form-label">(leave blank if you want to share all old posts. IMPORTANT: the date format MUST be YYYY-MM-DD)</span></td>';
 			$html .= '</tr>';
 
 			$html .= '<tr><td style="width:150px;"><strong>BACKLINKS INDEXER</strong></td><td><hr/></td></tr>';
 			$html .= '<tr>';
 			$html .= 	'<td>Use <a href="http://www.maxvim.com/private/tools/bi.php?who=twitterslm" target="_blank">BacklinksIndexer.com</a></td>';
-			$html .= 	'<td><input type="checkbox" name="wp_maxv_st_share_use_backlinksindexer" '.(($this->settings['share_use_backlinksindexer'])?'checked="1"':"").'/>'.
+			$html .= 	'<td><input type="checkbox" name="wp_maxv_st_share_use_backlinksindexer" '.((isset($this->settings['share_use_backlinksindexer']) && $this->settings['share_use_backlinksindexer'])?'checked="1"':"").'/>'.
 					' <span class="st-form-label"></span></td>';
 			$html .= '</tr>';
 			$html .= '<tr>';
 			$html .= 	'<td><a href="http://www.maxvim.com/private/tools/bi.php?who=twitterslm" target="_blank">BacklinksIndexer.com</a> API Key</td>';
-			$html .= 	'<td><input type="text" name="wp_maxv_st_share_use_backlinksindexer_key" value="'.$this->settings['share_use_backlinksindexer_key'].'" style="width:100px;"/>'.
+			$html .= 	'<td><input type="text" name="wp_maxv_st_share_use_backlinksindexer_key" value="'.((isset($this->settings['share_use_backlinksindexer_key']))?$this->settings['share_use_backlinksindexer_key']:'').'" style="width:100px;"/>'.
 					' <span class="st-form-label"></span> <a href="http://www.maxvim.com/private/tools/bi.php?who=twitterslm" target="_blank">Get a Backlinks Indexer Account HERE</a></td>';
 			$html .= '</tr>';
 				
@@ -267,28 +267,30 @@ if (!class_exists('SLMFacebookOptionsUI')) {
 		
 		private function getCallback() {
 			$html = '';
-			if (isset($_GET['page']) && trim($_GET['page'])!='') $page_id = $_GET['page'];
-			else $page_id = 'slm-facebook-autoposter';
-			$callback = admin_url('').'admin.php?page='.$page_id;
-			
-			require_once dirname(__FILE__).'/../utils/facebook/CustomFacebook.php';
-			$config = array(  'appId' => $this->settings['slm_facebook_consumer_key'],
-					'secret' => $this->settings['slm_facebook_consumer_secret'],
-					'nosession' => true, // my setting
-					'cookie' => true );
-			$facebook = new CustomFacebook($config);
-			$params = array ('redirect_uri' => $callback);
+			if (isset($this->settings['slm_facebook_consumer_key']) && $this->settings['slm_facebook_consumer_key'] &&
+				isset($this->settings['slm_facebook_consumer_secret']) && $this->settings['slm_facebook_consumer_secret']) {
+				if (isset($_GET['page']) && trim($_GET['page'])!='') $page_id = $_GET['page'];
+				else $page_id = 'slm-facebook-autoposter';
+				$callback = admin_url('').'admin.php?page='.$page_id;
 				
-			$url = $facebook->getLoginUrl($params);
-			$url .= '&scope=publish_actions,manage_pages';//&auth_type=reauthenticate';
-			if (!isset($this->settings['slm_facebook_code']) || !isset($this->settings['slm_facebook_token'])  || !isset($this->settings['slm_facebook_user'])) {
-				$html .= '<a href="'.$url.'">Authorize</a> ';
-			} else {
-				if (!trim($this->settings['slm_facebook_code']) || !trim($this->settings['slm_facebook_token'])  || !trim($this->settings['slm_facebook_user'])) {
+				require_once dirname(__FILE__).'/../utils/facebook/CustomFacebook.php';
+				$config = array(  'appId' => $this->settings['slm_facebook_consumer_key'],
+						'secret' => $this->settings['slm_facebook_consumer_secret'],
+						'nosession' => true, // my setting
+						'cookie' => true );
+				$facebook = new CustomFacebook($config);
+				$params = array ('redirect_uri' => $callback);
+					
+				$url = $facebook->getLoginUrl($params);
+				$url .= '&scope=publish_actions,manage_pages';//&auth_type=reauthenticate';
+				if (!isset($this->settings['slm_facebook_code']) || !isset($this->settings['slm_facebook_token'])  || !isset($this->settings['slm_facebook_user'])) {
 					$html .= '<a href="'.$url.'">Authorize</a> ';
-				} else $html .= '<a href="'.$url.'">Re-Authorize</a> ';
+				} else {
+					if (!trim($this->settings['slm_facebook_code']) || !trim($this->settings['slm_facebook_token'])  || !trim($this->settings['slm_facebook_user'])) {
+						$html .= '<a href="'.$url.'">Authorize</a> ';
+					} else $html .= '<a href="'.$url.'">Re-Authorize</a> ';
+				}
 			}
-				
 			return $html;
 		}
 		
