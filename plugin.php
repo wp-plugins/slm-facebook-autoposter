@@ -1,7 +1,7 @@
 <?php
 /*
 * Plugin Name:   Social Link Machine - Facebook Autoposter
-* Version:       0.1.0
+* Version:       0.1.1
 * Plugin URI:    http://www.maxvim.com/private/tools/slm.php?who=facebookslm
 * Description:   Share your posts and pages on Facebook.
 * Author:        Dr. Max V
