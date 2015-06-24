@@ -56,6 +56,9 @@ Improved FaceBook App Authorization
 = 0.1.0 =
 First released to public
 
+= 0.1.1 =
+Improved FaceBook App Authorization
+
 == Screenshots ==
 
 1. Post example.
