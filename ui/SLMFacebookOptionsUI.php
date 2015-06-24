@@ -282,7 +282,7 @@ if (!class_exists('SLMFacebookOptionsUI')) {
 				$params = array ('redirect_uri' => $callback);
 					
 				$url = $facebook->getLoginUrl($params);
-				$url .= '&scope=publish_actions,manage_pages';//&auth_type=reauthenticate';
+				$url .= '&scope=scope=publish_actions,manage_pages,publish_pages,user_posts,user_photos,user_groups';
 				if (!isset($this->settings['slm_facebook_code']) || !isset($this->settings['slm_facebook_token'])  || !isset($this->settings['slm_facebook_user'])) {
 					$html .= '<a href="'.$url.'">Authorize</a> ';
 				} else {

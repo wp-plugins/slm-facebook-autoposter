@@ -4,7 +4,7 @@ Donate link: http://www.maxvim.com/private/tools/slm.php?who=facebookslm
 Tags: facebook,facebook posting,facebook auto posting,timeline,fcebook timeline,fan page,facebook fan page,facebook autoposting,posting to facebook,posts,automation,autopost,auto-post,auto post,socialnetworks,socialnetwork,social networks,social network,bookmarks,bookmark,plugin,links,Post,posts,api,automatic,seo,search engine optimization
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ With a paid version of this plugin you can share you posts to multiple social an
 
 = 0.1.0 =
 Released to public
+
+= 0.1.1 =
+Improved FaceBook App Authorization
 
 == Upgrade Notice ==
 
